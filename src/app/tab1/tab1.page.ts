@@ -24,8 +24,8 @@ export class Tab1Page {
     this.loadMap();
   }
 
+  // Load the map
   loadMap() {
-
     navigator.geolocation.getCurrentPosition((position) => {
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
@@ -41,23 +41,24 @@ export class Tab1Page {
             this.addMarker(point.latitude, point.longitude, point);
           }
         })
-
     }, (err) => {
       console.log(err);
     });
   }
 
+  // Add marker retrieved from the API
   addMarker(latitude, longitude, object) {
-    var myLatLng = {lat: parseFloat(latitude), lng: parseFloat(longitude)};
+    var myLatLng = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: myLatLng,
-      pin : object
+      pin: object
     });
     this.addInfoWindow(marker);
   }
 
+  // Add info window to each 
   addInfoWindow(marker) {
     google.maps.event.addListener(marker, 'click', () => {
       this.display = !this.display
