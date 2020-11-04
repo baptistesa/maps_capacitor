@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,21 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  pin = {
+    latitude : "",
+    longitude : "",
+    name : "",
+    description : ""
+  }
+
+  constructor(private http : HttpClient) {}
+
+  // Send the new pin to the server
+  validateForm() {
+    this.http.post("http://localhost:3000/addPin", this.pin)
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
 
 }

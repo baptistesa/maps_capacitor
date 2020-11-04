@@ -1,17 +1,33 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Ajouter un pin
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <form>
+    <div>
+      <ion-label>Latitude</ion-label>
+      <ion-input name="latitude" [(ngModel)]="pin.latitude"></ion-input>
+    </div>
+    <div>
+      <ion-label>Longitude</ion-label>
+      <ion-input name="longitude" [(ngModel)]="pin.longitude"></ion-input>
+    </div>
+    <div>
+      <ion-label>Name</ion-label>
+      <ion-input name="name" [(ngModel)]="pin.name"></ion-input>
+    </div>
+    <div>
+      <ion-label>Description</ion-label>
+      <ion-input name="description" [(ngModel)]="pin.description"></ion-input>
+    </div>
+    <div style="text-align: center; margin-top: 10%;">
+      <ion-button (click)="validateForm()">Valider</ion-button>
+    </div>
+  </form>
+
 </ion-content>
